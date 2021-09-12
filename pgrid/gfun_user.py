@@ -29,7 +29,7 @@ def make_initial_info(dch, gridname=gridname):
     if gridname == 'sal0':
         # A Salish Sea grid, used as an example.
         aa = [-124, -122, 47, 49]
-        res = 300 # target resolution (m)
+        res = 600 # target resolution (m)
         Lon_vec, Lat_vec = gfu.simple_grid(aa, res)
         dch['nudging_edges'] = ['north', 'west']
         # Make the rho grid.
