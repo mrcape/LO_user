@@ -2,7 +2,7 @@
 Module of functions to create job definitions for a box extraction.
 """
 
-def get_box(job):
+def get_box(job, Lon, Lat):
     vn_list = 'h,f,pm,pn,salt,temp,rho,zeta,u,v' # default list
     # specific jobs
     if job == 'yang_sequim':
@@ -16,4 +16,8 @@ def get_box(job):
     elif job == 'full':
         aa = [Lon[0], Lon[-1], Lat[0], Lat[-1]]
         vn_list = 'h,f,pm,pn,salt,temp,oxygen'
+    elif job == 'liu_wind':
+        aa = [-123.5, -122.05, 47, 48.5]
+        vn_list = 'h,Uwind,Vwind'
+    
     return aa, vn_list
