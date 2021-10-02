@@ -27,9 +27,15 @@ roms_code = parent / 'LiveOcean_roms'
 # These are places where the ROMS history files are kept
 roms_out = parent / 'LO_roms'
 roms_out1 = parent / 'BLANK' # placeholder
-roms_out2 = parent / 'BLANK' # placeholder
-roms_out3 = parent / 'BLANK' # placeholder
-roms_out4 = parent / 'BLANK' # placeholder
+roms_out2 = parent / 'BLANK'
+roms_out3 = parent / 'BLANK'
+roms_out4 = parent / 'BLANK'
+
+# these are for mox and klone, other hyak mackines
+remote_user = 'BLANK'
+remote_machine = 'BLANK'
+remote_dir0 = 'BLANK'
+local_user = 'BLANK'
 
 # default for linux machines
 which_matlab = '/usr/local/bin/matlab'
@@ -68,9 +74,17 @@ elif (str(HOME) == '/home/parker') & ('apogee' in HOSTNAME):
     
 elif (str(HOME) == '/usr/lusers/pmacc'):
     lo_env = 'pm_mox'
+    remote_user = 'parker'
+    remote_machine = 'perigee.ocean.washington.edu'
+    remote_dir0 = '/data1/parker'
+    local_user = 'pmacc'
 
 elif (str(HOME) == '/mmfs1/home/pmacc'):
     lo_env = 'pm_klone'
+    remote_user = 'parker'
+    remote_machine = 'apogee.ocean.washington.edu'
+    remote_dir0 = '/dat1/parker'
+    local_user = 'pmacc'
   
 Ldir0 = dict()
 Ldir0['lo_env'] = lo_env
@@ -86,4 +100,10 @@ Ldir0['roms_out2'] = roms_out2
 Ldir0['roms_out3'] = roms_out3
 Ldir0['roms_out4'] = roms_out4
 Ldir0['which_matlab'] = which_matlab
+#
+Ldir0['remote_user'] = remote_user
+Ldir0['remote_machine'] = remote_machine
+Ldir0['remote_dir0'] = remote_dir0
+Ldir0['local_user'] = local_user
+
 
