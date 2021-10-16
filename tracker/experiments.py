@@ -1,36 +1,24 @@
 """
-This is where you set the run "gtagex" and the initial condition
+This is where you set the run initial condition using get_ic()
 based on an experiment name passed by the calling code.
+
+Thre are also some utility functions useful for making different
+common release patterns.
 
 """
 
 import numpy as np
-
-def get_exp_info(exp_name):
     
-    # Defaults
-    if exp_name == 'ai0':
-        gridname = 'ai0'; tag = 'v0'; ex_name = 'n0k'
-    else:
-        gridname = 'cas6'; tag = 'v3'; ex_name = 'lo8b'
-        
-    EI = {}
-    EI['exp_name'] = exp_name # tracker experiment name
-    # ROMS names
-    EI['gridname'] = gridname
-    EI['tag'] = tag
-    EI['ex_name'] = ex_name
-    EI['gtagex'] = gridname + '_' + tag + '_' + ex_name
-    return EI
-    
-def get_ic(EI, fn00):
+def get_ic(TR):
     # routines to set particle initial locations, all numpy arrays
     
     # NOTE: "pcs" refers to fractional depth, and goes linearly from -1 to 0
     # between the local bottom and free surface.  It is how we keep track of
     # vertical position, only converting to z-position when needed.
     
-    exp_name = EI['exp_name']
+    exp_name = TR['exp_name']
+    gridname = TR['gridname']
+    fn00 = TR['fn00']
         
     if exp_name == 'jdf0': # Mid-Juan de Fuca
         lonvec = np.linspace(-123.85, -123.6, 20)
