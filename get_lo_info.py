@@ -45,6 +45,10 @@ try:
     HOSTNAME = os.environ['HOSTNAME']
 except KeyError:
     HOSTNAME = 'BLANK'
+    
+# debugging
+print('HOME = ' + str(HOME))
+print('HOSTNAME = ' + HOSTNAME)
 
 if str(HOME) == '/Users/pm8':
     lo_env = 'pm_mac'
