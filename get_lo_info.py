@@ -45,10 +45,11 @@ try:
     HOSTNAME = os.environ['HOSTNAME']
 except KeyError:
     HOSTNAME = 'BLANK'
+    
 # debugging
-print('** from get_lo_info.py **')
-print('HOME = ' + str(HOME))
-print('HOSTNAME = ' + HOSTNAME)
+# print('** from get_lo_info.py **')
+# print('HOME = ' + str(HOME))
+# print('HOSTNAME = ' + HOSTNAME)
 
 if str(HOME) == '/Users/pm8':
     lo_env = 'pm_mac'
