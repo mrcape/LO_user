@@ -41,13 +41,12 @@ local_user = 'BLANK'
 which_matlab = '/usr/local/bin/matlab'
 
 HOME = Path.home()
-HOSTNAME = os.environ['HOSTNAME']
-# try:
-#     HOSTNAME = os.environ['HOSTNAME']
-# except KeyError:
-#     HOSTNAME = 'BLANK'
-
+try:
+    HOSTNAME = os.environ['HOSTNAME']
+except KeyError:
+    HOSTNAME = 'BLANK'
 # debugging
+print('** from get_lo_info.py **')
 print('HOME = ' + str(HOME))
 print('HOSTNAME = ' + HOSTNAME)
 
