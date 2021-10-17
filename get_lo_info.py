@@ -41,11 +41,12 @@ local_user = 'BLANK'
 which_matlab = '/usr/local/bin/matlab'
 
 HOME = Path.home()
-try:
-    HOSTNAME = os.environ['HOSTNAME']
-except KeyError:
-    HOSTNAME = 'BLANK'
-    
+HOSTNAME = os.environ['HOSTNAME']
+# try:
+#     HOSTNAME = os.environ['HOSTNAME']
+# except KeyError:
+#     HOSTNAME = 'BLANK'
+
 # debugging
 print('HOME = ' + str(HOME))
 print('HOSTNAME = ' + HOSTNAME)
@@ -68,14 +69,14 @@ elif (str(HOME) == '/home/parker') & ('perigee' in HOSTNAME):
     roms_out2 = Path('/data1/parker/LiveOcean_roms/output')     # LiveOcean past I
     roms_out3 = Path('/data2/parker/LiveOcean_roms/output')     # LiveOcean past II
     roms_out4 = Path('/boildat1/parker/LO_roms')                # LO boiler
-    
+
 elif (str(HOME) == '/home/parker') & ('apogee' in HOSTNAME):
     lo_env = 'pm_apogee'
     roms_out1 = Path('/boildat/parker/LiveOcean_roms/output')  # LiveOcean current
     roms_out2 = Path('/pgdat1/parker/LiveOcean_roms/output')     # LiveOcean past I
     roms_out3 = Path('/pgdat2/parker/LiveOcean_roms/output')     # LiveOcean past II
     roms_out4 = Path('/boildat/parker/LO_roms')                # LO boiler
-    
+
 elif (str(HOME) == '/usr/lusers/pmacc'):
     lo_env = 'pm_mox'
     remote_user = 'parker'
@@ -89,7 +90,7 @@ elif (str(HOME) == '/mmfs1/home/pmacc'):
     remote_machine = 'apogee.ocean.washington.edu'
     remote_dir0 = '/dat1/parker'
     local_user = 'pmacc'
-  
+
 Ldir0 = dict()
 Ldir0['lo_env'] = lo_env
 Ldir0['parent'] = parent
