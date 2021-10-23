@@ -22,7 +22,7 @@ def get_box(job, Lon, Lat):
     elif job == 'liu_ps':
         aa = [-123.3, -122.2, 47, 49]
         vn_list = 'h,f,pm,pn,mask_rho,salt,temp,Uwind,Vwind,shflux'
-    elif job == 'surface1':
+    elif job == 'surface0':
         aa = [Lon[0], Lon[-1], Lat[0], Lat[-1]]
         vn_list = 'h,f,pm,pn,mask_rho,salt,temp,u,v,Uwind,Vwind'
     
