@@ -7,6 +7,9 @@ def get_box(job, Lon, Lat):
     # specific jobs
     if job == 'yang_sequim':
         aa = [-123.15120787, -122.89090010, 48.07302111, 48.19978336]
+    elif job == 'taiping_hc':
+        aa = [-122.66394, -122.61417, 47.93171, 47.94398]
+        vn_list = 'h,f,pm,pn,mask_rho,salt,temp,zeta,oxygen,phytoplankton,NO3'
     elif job == 'PS':
         # 3 MB per save (26 GB/year for hourly)
         aa = [-123.5, -122.05, 47, 49]
