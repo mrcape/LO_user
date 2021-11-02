@@ -42,6 +42,27 @@ def get_ic(TR):
         pcs_vec = np.linspace(-1,0,num=4000)
         plon00, plat00, pcs00 = ic_from_list(lonvec, latvec, pcs_vec)
         
+    elif exp_name == 'dmMerhab':
+        nyp = 7
+        x0 = -126; x1 = -125; y0 = 48; y1 = 49
+        clat_1 = np.cos(np.pi*(np.mean([y0, y1]))/180)
+        xyRatio = clat_1 * (x1 - x0) / (y1 - y0)
+        lonvec = np.linspace(x0, x1, (nyp * xyRatio).astype(int))
+        latvec = np.linspace(y0, y1, nyp)
+        lonmat_1, latmat_1 = np.meshgrid(lonvec, latvec)
+        #
+        x0 = -125.2; x1 = -124.2; y0 = 44; y1 = 45
+        clat_2 = np.cos(np.pi*(np.mean([y0, y1]))/180)
+        xyRatio = clat_2 * (x1 - x0) / (y1 - y0)
+        lonvec = np.linspace(x0, x1, (nyp * xyRatio).astype(int))
+        latvec = np.linspace(y0, y1, nyp)
+        lonmat_2, latmat_2 = np.meshgrid(lonvec, latvec)
+        lonmat = np.concatenate((lonmat_1.flatten(), lonmat_2.flatten()))
+        latmat = np.concatenate((latmat_1.flatten(), latmat_2.flatten()))
+        #
+        plon00 = lonmat.flatten(); plat00 = latmat.flatten()
+        pcs00 = np.zeros(plon00.shape)
+        
     return plon00, plat00, pcs00
     
 def ic_from_meshgrid(lonvec, latvec, pcs_vec):
