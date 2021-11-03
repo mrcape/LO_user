@@ -32,5 +32,7 @@ def get_box(job, Lon, Lat):
         aa = [-125.016452048434, -124.494612925929, 48.312, 48.7515055163539]
         vn_list = ('h,f,pm,pn,mask_rho,salt,temp,zeta,NO3,phytoplankton,'
                 + 'zooplankton,detritus,Ldetritus,oxygen,TIC,alkalinity,CaCO3,rho')
-    
+    elif job == 'cox':
+        aa = [-123.204529, -122.728532, 48.393771, 48.726895]
+        vn_list = 'h,pm,pn,mask_rho,salt,temp,phytoplankton'
     return aa, vn_list
