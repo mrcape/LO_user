@@ -63,6 +63,20 @@ def get_ic(TR):
         plon00 = lonmat.flatten(); plat00 = latmat.flatten()
         pcs00 = np.zeros(plon00.shape)
         
+    elif exp_name == 'full': # the whole domain of cas6, with some edges trimmed
+        # used by drifters0
+        lonvec = np.linspace(-129, -122, 30)
+        latvec = np.linspace(43, 51, 60)
+        pcs_vec = np.array([0])
+        plon00, plat00, pcs00 = ic_from_meshgrid(lonvec, latvec, pcs_vec)
+        
+    elif exp_name == 'PS': # nominally Puget Sound
+        # used by drifters0
+        lonvec = np.linspace(-123.6, -122, 50)
+        latvec = np.linspace(47, 49, 100)
+        pcs_vec = np.array([0])
+        plon00, plat00, pcs00 = ic_from_meshgrid(lonvec, latvec, pcs_vec)
+        
     return plon00, plat00, pcs00
     
 def ic_from_meshgrid(lonvec, latvec, pcs_vec):
