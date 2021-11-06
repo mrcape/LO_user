@@ -80,8 +80,10 @@ elif (str(HOME) == '/home/parker') & ('apogee' in HOSTNAME):
 elif (str(HOME) == '/usr/lusers/pmacc'):
     lo_env = 'pm_mox'
     remote_user = 'parker'
-    remote_machine = 'perigee.ocean.washington.edu'
-    remote_dir0 = '/data1/parker'
+    # remote_machine = 'perigee.ocean.washington.edu'
+    # remote_dir0 = '/data1/parker'
+    remote_machine = 'apogee.ocean.washington.edu'
+    remote_dir0 = '/dat1/parker'
     local_user = 'pmacc'
 
 elif (str(HOME) == '/mmfs1/home/pmacc'):
