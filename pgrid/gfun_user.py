@@ -108,7 +108,8 @@ def make_initial_info(gridname=gridname):
         aa = [-123.13, -122.76, 47, 47.42]
         res = 50 # target resolution (m)
         Lon_vec, Lat_vec = gfu.simple_grid(aa, res)
-        dch['t_list'] = [dch['t_dir'] / 'psdem_10m' / 'PS_30m.nc']
+        dch['t_list'] = [dch['t_dir'] / 'srtm15' / 'topo15.nc',
+                    dch['t_dir'] / 'psdem_10m' / 'PS_30m.nc']
         dch['nudging_edges'] = ['east']
         dch['nudging_days'] = (0.1, 1.0)
         
