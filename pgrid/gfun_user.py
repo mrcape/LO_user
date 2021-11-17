@@ -103,8 +103,14 @@ def make_initial_info(gridname=gridname):
             
     elif gridname == 'so0':
         # South Sound
-        dch = gfun.default_choices(wet_dry=True)
-        dch['z_land'] = 4
+        dch = gfun.default_choices()
+        
+        dch['z_offset'] = -1.3 # NAVD88 is 1.3 m below MSL at Seattle
+        
+        dch['min_depth'] = 0.2 # requires WET_DRY in ROMS
+        
+        dch['excluded_rivers'] = ['skokomish']
+        
         aa = [-123.13, -122.76, 47, 47.42]
         res = 50 # target resolution (m)
         Lon_vec, Lat_vec = gfu.simple_grid(aa, res)
