@@ -107,9 +107,11 @@ def make_initial_info(gridname=gridname):
         
         dch['z_offset'] = -1.3 # NAVD88 is 1.3 m below MSL at Seattle
         
-        dch['min_depth'] = 0.2 # requires WET_DRY in ROMS
+        dch['min_depth'] = 0.4 # requires WET_DRY in ROMS
         
         dch['excluded_rivers'] = ['skokomish']
+        
+        dch['rx0max'] = 0.12 # default is 0.15 (smaller = smoother)
         
         aa = [-123.13, -122.76, 47, 47.42]
         res = 50 # target resolution (m)
