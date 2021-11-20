@@ -5,7 +5,7 @@ Module of functions to create job definitions for a box extraction.
 def get_box(job, Lon, Lat):
     vn_list = 'h,f,pm,pn,mask_rho,salt,temp,rho,zeta,u,v,ubar,vbar' # default list
     # specific jobs
-    if job == 'yang_sequim':
+    if job == 'sequim0':
         aa = [-123.15120787, -122.89090010, 48.07302111, 48.19978336]
     elif job == 'taiping_hc':
         aa = [-122.66394, -122.61417, 47.93171, 47.94398]
