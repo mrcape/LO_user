@@ -73,7 +73,10 @@ def get_sta_dict(job_name):
         
     elif job_name == 'ooi':
         sta_dict = {
+            'CE01':(-124.095, 44.6598), # Oregon Inshore (25 m)
+            'CE02':(-124.304, 44.6393), # Oregon Shelf (80 m)
             'CE04':(-124.956, 44.3811), # Oregon Offshore (588 m)
+            'PN01A':(-125.3983, 44.5096), # Slope Base (2905 m)
         }
             
     else:
