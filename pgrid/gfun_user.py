@@ -22,13 +22,17 @@ gridname = 'ae0'
 s_dict = {'THETA_S': 4, 'THETA_B': 2, 'TCLINE': 10, 'N': 30,
         'VTRANSFORM': 2, 'VSTRETCHING': 4}
 
+# Set the gridname and tag to use when creating the Ldir paths.
+# They are used for accessing the river tracks, which may be developed for one
+# grid but reused in others.
 if gridname in ['ai0','hc0', 'sal0', 'so0']:
-    # These are the gridname and tag to feed to use when creating the Ldir paths.
-    # They are used for accessing the river tracks, which may be developed for one
-    # grid but reused in others.
+    # these cases reuse (all or some of) the LiveOcean cas6 model rivers
     base_gridname = 'cas6'
     base_tag = 'v3'
 elif gridname in ['ae0']:
+    # for analytical cases we create the river info and track in
+    # make_initial_info() below, but we still assign gridname and tag so
+    # that they get saved in the right places
     base_gridname = 'ae0'
     base_tag = 'v0'
 
@@ -133,7 +137,7 @@ def make_initial_info(gridname=gridname):
             z = z + dch['z_offset']
             
     elif gridname == 'ae0':
-        # idealized model estuary
+        # analytical model estuary
         dch = gfun.default_choices()
         lon_list = [-2, 0, 1, 2, 3]
         x_res_list = [2500, 500, 500, 2500, 2500]
@@ -166,22 +170,33 @@ def make_initial_info(gridname=gridname):
         with open(gri_fn, 'w') as rf:
             rf.write('rname,usgs,ec,nws,ratio,depth,flow_units,temp_units\n')
             rf.write('creek0,,,,1.0,5.0,m3/s,degC\n')
-        # and make a geographic path
+        # and make a track for the river
         track_dir = ri_dir / 'tracks'
         Lfun.make_dir(track_dir)
         track_fn = track_dir / 'creek0.p'
         track_df = pd.DataFrame()
-        track_df['lon'] = np.linspace(0,4,100)
-        track_df['lat'] = 45*np.ones(100)
+        NTR = 100
+        track_df['lon'] = np.linspace(0,4,NTR) # OK to go past edge of domain
+        track_df['lat'] = 45*np.ones(NTR)
         track_df.to_pickle(track_fn)
         # NOTE: tracks go from ocean to land
-        
-        
         
     else:
         print('Error from make_initial_info: unsupported gridname')
         return
         
+    # check for odd size of grid and trim if needed
+    NR, NC = lon.shape
+    if np.mod(NR,2) != 0:
+        print('- trimming row from grid')
+        lon = lon[:-1,:]
+        lat = lat[:-1,:]
+        z = z[:-1,:]
+    if np.mod(NC,2) != 0:
+        print('- trimming column from grid')
+        lon = lon[:,:-1]
+        lat = lat[:,:-1]
+        z = z[:,:-1]
     return lon, lat, z, dch
     
 
