@@ -78,6 +78,19 @@ def get_sta_dict(job_name):
             'CE04':(-124.956, 44.3811), # Oregon Offshore (588 m)
             'PN01A':(-125.3983, 44.5096), # Slope Base (2905 m)
         }
+        
+    elif job_name == 'erika_esci491w2022':
+        sta_dict = {
+        'Olympia': (-122.9165, 47.0823),
+        'Tacoma': (-122.4758, 47.3015),
+        'Seattle_West_Point': (-122.4435, 47.6813),
+        'Bellingham': (-122.5519, 48.7348),
+        'Central_Hood_Canal': (-122.9895, 47.5744),
+        'Skokomish': (-123.1272, 47.3639),
+        'Hein_Bank': (-123.0394, 48.35825),
+        'Admiralty': (-122.6949, 48.1370),
+        'Everett': (-122.2806, 47.9855)
+        }
             
     else:
         print('Unsupported job name!')
