@@ -52,3 +52,4 @@ def get_box(job, Lon, Lat):
         aa = [-123.15, -122.84, 48.68, 48.95]
         vn_list = 'h,pm,pn,mask_rho,salt,temp,zeta,u,v'
     return aa, vn_list
+    
